@@ -1,0 +1,7 @@
+{
+  "name": "todo-list-ragasa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
