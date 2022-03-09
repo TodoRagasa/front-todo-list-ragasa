@@ -1,0 +1,4 @@
+export const RETRIEVE_TODOS = '[TODO] RETRIEVE_TODOS';
+export const CREATE_TODO = '[TODO] CREATE TODO';
+export const UPDATE_TODO = '[TODO] UPDATE TODO';
+export const DELETE_TODO = '[TODO] DELETE TODO';

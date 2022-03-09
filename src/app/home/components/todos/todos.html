@@ -1,0 +1,29 @@
+<ion-list *ngIf="todos.length > 0">
+    <ion-item-sliding *ngFor="let todo of todos">
+        <ion-item lines="none">
+            <ion-label class="label-span container-icon-label">
+                <div class="container-icon-label-info">
+                    <h2 class="color-title-task">{{todo.name}}</h2>
+                    <h3 class="color-title-task">{{todo.description}}</h3>
+                    <p class="paragraph-date">Creado: {{todo.createdAt | date:'medium'}}</p>
+                </div>
+                <div class="container-icon-label-buttons">
+                    <ion-button size="small" (click)="editTodo(todo)" *ngIf="!isSelectTodos">
+                        <ion-icon name="information-circle"></ion-icon>
+                    </ion-button>
+                    <ion-checkbox color="primary" *ngIf="isSelectTodos" (click)="selectTodo($event,todo)">
+                    </ion-checkbox>
+                </div>
+            </ion-label>
+        </ion-item>
+        <ion-item-options>
+            <ion-item-option color="primary" (click)="completeTodo(todo)" *ngIf="!todo.complete">
+                Completar
+            </ion-item-option>
+            <ion-item-option color="danger" (click)="deleteTodo(todo)">
+                Eliminar
+            </ion-item-option>
+        </ion-item-options>
+        <span class="todo-complete" *ngIf="todo.complete"></span>
+    </ion-item-sliding>
+</ion-list>

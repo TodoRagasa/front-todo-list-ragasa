@@ -1,20 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+    <ion-header translucent class="toolbar-todos">
+        <ion-buttons slot="start">
+            <ion-back-button>+</ion-back-button>
+        </ion-buttons>
+        <ion-toolbar color="tertiary">
+            <ion-buttons slot="start">
+                <ion-button (click)="selectTodos()">
+                    <ion-icon name="checkbox" *ngIf="isSelectTodos"></ion-icon>
+                    <ion-icon name="checkbox-outline" *ngIf="!isSelectTodos"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+                <ion-button (click)="createTodo()" *ngIf="!todosSelected > 0">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+                <ion-button *ngIf="todosSelected > 0" (click)="deleteTodosSelected()">
+                    <ion-icon name="trash"></ion-icon>
+                </ion-button>
+                <ion-button *ngIf="todosSelected > 0" (click)="updateTodosSelected()">
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-title>Todo List</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-content class="ion-wrapper-todos">
+        <div class="container-no-todos"
+             *ngIf="todos.length === 0">
+            <h1 class="color-title-task">No hay todos registrados</h1>
+        </div>
+        <app-todos
+            [isSelectTodos]="isSelectTodos"
+            (checkTodosSelected)="checkTodosSelected($event)"
+            (clearTodos)="clear()"
+        >
+        </app-todos>
+    </ion-content>
+</ion-app>

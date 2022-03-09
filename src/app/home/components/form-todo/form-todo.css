@@ -1,0 +1,25 @@
+.button-todo {
+    width: 90%;
+    background-color: #6869F9;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+}
+
+.container-button-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.ion-container-form-todo {
+    margin-top: 50px;
+    height: 100vh;
+}
+
+.toolbar-todo-form {
+    background: #FCFCFF;
+    height: 85px;
+    display: flex;
+}

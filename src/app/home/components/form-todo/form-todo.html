@@ -1,0 +1,52 @@
+<ion-content class="ion-container-form-todo">
+    <ion-header translucent class="toolbar-todo-form">
+        <ion-buttons slot="start">
+            <ion-back-button>+</ion-back-button>
+        </ion-buttons>
+        <ion-toolbar color="tertiary">
+            <ion-title>{{typeAction === 'update' ? name : 'Crear todo'}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div>
+        <form [formGroup]="formTodo">
+            <ion-item lines="full">
+                <ion-label position="floating">Titulo *</ion-label>
+                <ion-input formControlName="name" type="text" required class="color-text-titles"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+                <ion-label position="floating">Descripción *</ion-label>
+                <ion-input formControlName="description" type="text" required class="color-text-titles"></ion-input>
+            </ion-item>
+
+            <ion-item lines="full" *ngIf="typeAction === 'update'">
+                <ion-label position="floating">Fecha de creación</ion-label>
+                <ion-input formControlName="createdAt" type="text" disabled required></ion-input>
+            </ion-item>
+
+            <ion-item lines="full" *ngIf="typeAction === 'update'">
+                <ion-label position="floating">Ultima modificación</ion-label>
+                <ion-input formControlName="updatedAt" type="text" disabled required></ion-input>
+            </ion-item>
+
+            <ion-item lines="full" *ngIf="typeAction === 'update'">
+                <ion-checkbox color="primary" formControlName="complete"></ion-checkbox>
+                Completado
+            </ion-item>
+            <div class="container-button-actions">
+                <ion-button color="primary" size="full"
+                            (click)="createNewTodo()"
+                            *ngIf="typeAction==='create'"
+                            [disabled]="formTodo.invalid">Agregar
+                </ion-button>
+                <ion-button color="primary" size="full"
+                            (click)="updateTodo()"
+                            *ngIf="typeAction==='update'"
+                            [disabled]="formTodo.invalid">Actualizar
+                </ion-button>
+                <ion-button color="danger" size="full" (click)="closeModal()">Cancelar</ion-button>
+            </div>
+        </form>
+    </div>
+</ion-content>
+

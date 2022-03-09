@@ -1,0 +1,19 @@
+.container-icon-label {
+    display: flex;
+}
+
+.container-icon-label-info {
+    width: 90%;
+}
+
+.container-icon-label-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.paragraph-date {
+    color: #83839D;
+    font-size: 12px;
+}
